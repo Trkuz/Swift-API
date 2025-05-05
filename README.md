@@ -26,7 +26,27 @@ This API utilizes the FastAPI framework and provides a comprehensive backend for
 ### Prerequisites
 
 - [Docker](https://www.docker.com/products/docker-desktop)
-- [Docker Compose](https://docs.docker.com/compose/install/) 
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+### Running the Application
+
+Application can be run using Docker:
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/Trkuz/Swift-API.git
+   cd Swift-API
+   ```
+
+2. Run the application with Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
+
+After building has finished building, user can access documentation via:
+   - Swagger UI: http://localhost:8080/docs
+   - ReDoc: http://localhost:8080/redoc
 
 ## Project Structure
 
