@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:postgres@db:5432/swift_db
+      - ENVIRONMENT=development
+      - PYTHONPATH=/app
+    volumes:
+      - .:/app
+    command: >
+      bash -c "echo 'Setting up environment...' &&
+               cd /app/Database &&
+               alembic upgrade head &&
+               cd /app &&
+               python populate_base.py &&
+               uvicorn main:app --host 0.0.0.0 --port 8080 --reload"
+
+  db:
+    image: postgres:17
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=swift_db
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres_data:

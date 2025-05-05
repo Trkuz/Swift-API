@@ -1,0 +1,13 @@
+fastapi
+uvicorn[standard]
+sqlalchemy
+psycopg2
+pandas
+openpyxl
+pydantic
+pytest
+pycountry
+alembic
+sqlalchemy_utils
+httpx
+openpyxl
